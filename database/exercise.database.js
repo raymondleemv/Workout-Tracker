@@ -9,7 +9,7 @@ async function getExercisesByUserId(userID) {
 }
 
 async function editExercise(exercise) {
-	return await await Exercise.findOneAndUpdate({ _id: exercise._id }, exercise);
+	return await Exercise.findOneAndUpdate({ _id: exercise._id }, exercise);
 }
 
 async function deleteExercise(exerciseID) {
