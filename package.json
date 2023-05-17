@@ -23,6 +23,7 @@
 	},
 	"devDependencies": {
 		"dotenv": "^16.0.3",
+		"jasmine": "^5.0.0",
 		"nodemon": "^2.0.22"
 	}
 }
