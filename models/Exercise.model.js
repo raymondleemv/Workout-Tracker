@@ -11,7 +11,7 @@ const Schema = new mongoose.Schema(
 			required: true,
 		},
 		user: {
-			type: Schema.Types.ObejctId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User',
 		},
 	},
@@ -20,4 +20,4 @@ const Schema = new mongoose.Schema(
 
 const Exercise = mongoose.model('Exercise', Schema);
 
-export default Exercise;
+module.exports = Exercise;

@@ -16,4 +16,9 @@ async function deleteExercise(exerciseID) {
 	return await Exercise.deleteOne({ _id: exerciseID });
 }
 
-export { addExercise, getExercisesByUserId, editExercise, deleteExercise };
+module.exports = {
+	addExercise,
+	getExercisesByUserId,
+	editExercise,
+	deleteExercise,
+};

@@ -1,5 +1,5 @@
-const express = require(express);
-const database = require('../database/database');
+const express = require('express');
+const database = require('../database/exercise.database');
 
 const router = express.Router();
 
@@ -12,4 +12,4 @@ router.get('/add', async (req, res) => {
 	res.send('add exercise successful');
 });
 
-export default router;
+module.exports = router;

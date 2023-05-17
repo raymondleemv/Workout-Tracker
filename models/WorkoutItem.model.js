@@ -9,11 +9,11 @@ const Schema = new mongoose.Schema(
 			type: Number,
 		},
 		workout: {
-			type: Schema.Types.ObejctId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Workout',
 		},
 		exercise: {
-			type: Schema.Types.ObejctId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Exercise',
 		},
 	},
@@ -22,4 +22,4 @@ const Schema = new mongoose.Schema(
 
 const WorkoutItem = mongoose.model('WorkoutItem', Schema);
 
-export default WorkoutItem;
+module.exports = WorkoutItem;

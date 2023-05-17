@@ -6,7 +6,9 @@ const Schema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		workout_items: [{ type: Schema.Types.ObjectId, ref: 'WorkoutItem' }],
+		workout_items: [
+			{ type: mongoose.Schema.Types.ObjectId, ref: 'WorkoutItem' },
+		],
 		user: {
 			type: Schema.Types.ObejctId,
 			ref: 'User',
@@ -17,4 +19,4 @@ const Schema = new mongoose.Schema(
 
 const Workout = mongoose.model('Workout', Schema);
 
-export default Workout;
+module.exports = Workout;

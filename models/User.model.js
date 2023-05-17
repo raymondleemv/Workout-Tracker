@@ -11,12 +11,12 @@ const Schema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		exercises: [{ type: Schema.Types.ObjectId, ref: 'Exercise' }],
-		workouts: [{ type: Schema.Types.ObjectId, ref: 'Workout' }],
+		exercises: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Exercise' }],
+		workouts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Workout' }],
 	},
 	{ collection: 'users' }
 );
 
 const User = mongoose.model('User', Schema);
 
-export default User;
+module.exports = User;
