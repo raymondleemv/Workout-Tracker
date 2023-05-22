@@ -3,7 +3,7 @@ const database = require('../database/exercise.database');
 
 const router = express.Router();
 
-router.get('/add', async (req, res) => {
+router.post('/add', async (req, res) => {
 	try {
 		await database.addExercise(req.body);
 	} catch (e) {
