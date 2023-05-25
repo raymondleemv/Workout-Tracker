@@ -28,3 +28,5 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm run test
+        env:
+          MONGO_URI: ${{ vars.MONGO_URI }}
