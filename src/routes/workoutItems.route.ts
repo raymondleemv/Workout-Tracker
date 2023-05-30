@@ -1,42 +1,42 @@
 import express from 'express';
-import * as database from '../database/exercise.database';
+import * as database from '../database/workoutItem.database';
 
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
 	try {
-		await database.addExercise(req.body);
+		await database.addWorkoutItem(req.body);
 	} catch (e) {
 		res.status(400).send(e);
 	}
-	res.send('add exercise successful');
+	res.send('add workoutItem successful');
 });
 
 router.post('/get', async (req, res) => {
 	try {
-		await database.getExercisesByUserId(req.body);
+		await database.getWorkoutItemsByWorkoutId(req.body);
 	} catch (e) {
 		res.status(400).send(e);
 	}
-	res.send('get exercises successful');
+	res.send('get workoutItems successful');
 });
 
 router.post('/edit', async (req, res) => {
 	try {
-		await database.editExercise(req.body);
+		await database.editWorkoutItem(req.body);
 	} catch (e) {
 		res.status(400).send(e);
 	}
-	res.send('edit exercise successful');
+	res.send('edit workoutItem successful');
 });
 
 router.post('/delete', async (req, res) => {
 	try {
-		await database.deleteExercise(req.body);
+		await database.deleteWorkoutItem(req.body);
 	} catch (e) {
 		res.status(400).send(e);
 	}
-	res.send('delete exercise successful');
+	res.send('delete workoutItem successful');
 });
 
 export default router;

@@ -1,7 +1,6 @@
-import { Schema, model, Types } from 'mongoose';
+import { Schema, model, Types, Document } from 'mongoose';
 
-interface IWorkout {
-	_id: Types.ObjectId;
+interface IWorkout extends Document {
 	date: string;
 	workout_items: Array<Types.ObjectId>;
 	user: Types.ObjectId;
@@ -24,4 +23,4 @@ const workoutSchema = new Schema<IWorkout>(
 
 const Workout = model('Workout', workoutSchema);
 
-export default Workout;
+export { Workout, IWorkout };

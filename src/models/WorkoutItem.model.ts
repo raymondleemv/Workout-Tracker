@@ -1,7 +1,6 @@
-import { Schema, model, Types } from 'mongoose';
+import { Schema, model, Types, Document } from 'mongoose';
 
-interface IWorkoutItem {
-	_id: Types.ObjectId;
+interface IWorkoutItem extends Document {
 	weight: Number;
 	reps: Number;
 	workout: Types.ObjectId;
@@ -30,4 +29,4 @@ const workoutItemSchema = new Schema<IWorkoutItem>(
 
 const WorkoutItem = model('WorkoutItem', workoutItemSchema);
 
-export default WorkoutItem;
+export { WorkoutItem, IWorkoutItem };
