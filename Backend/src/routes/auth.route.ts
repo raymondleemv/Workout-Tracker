@@ -72,7 +72,7 @@ router.post('/signup', async function (req, res) {
 			password: hashedPassword,
 		});
 	} catch (e) {
-		return res.status(403).send(`Error: ${e}`);
+		return res.status(400).send(`Error: ${e}`);
 	}
 	return res.send('User created successfully');
 });
