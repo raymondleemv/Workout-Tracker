@@ -1,21 +1,21 @@
-// Configure backend server url depending on environment vairable
-let backendServerUrl: string;
-if (import.meta.env.VITE_DEPLOY === 'true') {
-	backendServerUrl = '';
-} else if (import.meta.env.PROD) {
-	backendServerUrl = '';
-} else {
-	backendServerUrl = 'http://localhost:3002';
-}
+import { backendServerUrl } from './connection';
 
-// Did not factor fetch in signup() and login() for flexibility:
-// signup() might have more inputs in the future
-async function signup(email: string, password: string) {
-	const data = {
-		email: email,
-		password: password,
-	};
-	const response = await fetch(backendServerUrl + '/api/auth/signup', {
+type SignupData = {
+	email: string;
+	password: string;
+};
+
+type LoginData = {
+	email: string;
+	password: string;
+};
+
+const backendAuthRoutesUrl = backendServerUrl + '/api/auth';
+async function fetchBackendAuthRoutes(
+	endpoint: string,
+	data: SignupData | LoginData
+) {
+	const response = await fetch(backendAuthRoutesUrl + endpoint, {
 		method: 'POST',
 		credentials: 'include',
 		headers: {
@@ -26,19 +26,21 @@ async function signup(email: string, password: string) {
 	return response;
 }
 
-async function login(email: string, password: string) {
-	const data = {
+async function signup(email: string, password: string) {
+	const data: SignupData = {
 		email: email,
 		password: password,
 	};
-	const response = await fetch(backendServerUrl + '/api/auth/login', {
-		method: 'POST',
-		credentials: 'include',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data),
-	});
+	const response = await fetchBackendAuthRoutes('/signup', data);
+	return response;
+}
+
+async function login(email: string, password: string) {
+	const data: LoginData = {
+		email: email,
+		password: password,
+	};
+	const response = await fetchBackendAuthRoutes('/login', data);
 	return response;
 }
 
