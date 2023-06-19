@@ -1,0 +1,82 @@
+/* 2b. #header navbar */
+.hamburger-menu {
+	position: relative;
+}
+
+.hamburger-menu a {
+	color: var(--color-palette-200);
+	font-family: Asap;
+	text-align: center;
+	text-decoration: none;
+}
+
+.hamburger-menu a:hover {
+	color: var(--color-palette-50);
+	transition: 0.3s;
+}
+
+.hamburger-menu__button.close + .hamburger-menu__list {
+	display: block !important;
+}
+
+.hamburger-menu__list {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	padding: 16px;
+	background-color: var(--color-palette-800);
+	list-style: none;
+}
+
+.hamburger-menu__list li {
+	text-align: center;
+}
+
+.hamburger-menu__list li:not(:first-child) {
+	margin-top: 16px;
+	text-align: center;
+}
+
+/* 2d. Dropdown Menu */
+.hamburger-menu__button {
+	--stripes-length: 36px;
+	height: var(--logo-size, 48px);
+	width: var(--stripes-length);
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	justify-content: center;
+}
+
+.hamburger-menu__stripes {
+	width: var(--stripes-length);
+	height: 2px;
+	background-color: var(--color-palette-50);
+	transition: 0.25s ease-in-out;
+}
+
+/* Hamburger Menu Animation: https://codepen.io/designcouch/pen/ExvwPY */
+.hamburger-menu__button.close .hamburger-menu__stripes {
+	position: absolute;
+}
+
+.hamburger-menu__button.close .hamburger-menu__stripes:nth-child(1) {
+	transform: rotate(135deg);
+}
+
+.hamburger-menu__button.close .hamburger-menu__stripes:nth-child(2) {
+	opacity: 0;
+}
+
+.hamburger-menu__button.close .hamburger-menu__stripes:nth-child(3) {
+	transform: rotate(-135deg);
+}
+
+.hamburger-menu__button:hover > .hamburger-menu__stripes {
+	background-color: var(--color-palette-200);
+}
