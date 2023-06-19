@@ -12,11 +12,12 @@ type LoginData = {
 
 const backendAuthRoutesUrl = backendServerUrl + '/api/auth';
 async function fetchBackendAuthRoutes(
+	method: 'GET' | 'POST',
 	endpoint: string,
-	data: SignupData | LoginData
+	data?: SignupData | LoginData
 ) {
 	const response = await fetch(backendAuthRoutesUrl + endpoint, {
-		method: 'POST',
+		method: method,
 		credentials: 'include',
 		headers: {
 			'Content-Type': 'application/json',
@@ -31,7 +32,7 @@ async function signup(email: string, password: string) {
 		email: email,
 		password: password,
 	};
-	const response = await fetchBackendAuthRoutes('/signup', data);
+	const response = await fetchBackendAuthRoutes('POST', '/signup', data);
 	return response;
 }
 
@@ -40,8 +41,13 @@ async function login(email: string, password: string) {
 		email: email,
 		password: password,
 	};
-	const response = await fetchBackendAuthRoutes('/login', data);
+	const response = await fetchBackendAuthRoutes('POST', '/login', data);
 	return response;
 }
 
-export { signup, login };
+async function isAuthenticated() {
+	const response = await fetchBackendAuthRoutes('GET', '/status');
+	return response.status === 200 ? true : false;
+}
+
+export { signup, login, isAuthenticated };
