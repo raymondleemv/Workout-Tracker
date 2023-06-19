@@ -31,7 +31,7 @@ passport.use(
 );
 
 passport.serializeUser(function (user: any, cb) {
-	cb(null, { email: user.email });
+	cb(null, { id: user._id, email: user.email });
 });
 
 passport.deserializeUser(function (user: any, cb) {
@@ -77,4 +77,21 @@ router.post('/signup', async function (req, res) {
 	return res.send('User created successfully');
 });
 
+let ensureLoggedIn = (
+	req: express.Request,
+	res: express.Response,
+	next: express.NextFunction
+): void => {
+	if (!req.isAuthenticated()) {
+		res.status(400).send('Not Authorized. Please log in first.');
+		return;
+	}
+	next();
+};
+
+router.get('/status', ensureLoggedIn, (req, res) => {
+	res.send('Authorized');
+});
+
 export default router;
+export { ensureLoggedIn };

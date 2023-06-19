@@ -5,7 +5,7 @@ import userRoutes from '../routes/users.route';
 import workoutRoutes from '../routes/workouts.route';
 import workoutItemRoutes from '../routes/workoutItems.route';
 import passport from 'passport';
-import authRoutes from '../routes/auth.route';
+import authRoutes, { ensureLoggedIn } from '../routes/auth.route';
 import MongoStore from 'connect-mongo';
 import cors from 'cors';
 import session from 'express-session';
@@ -34,6 +34,8 @@ app.use(
 );
 app.use(passport.authenticate('session'));
 app.use('/api/auth', authRoutes);
+
+app.use(ensureLoggedIn);
 app.use('/api/exercises', exerciseRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/workouts', workoutRoutes);
