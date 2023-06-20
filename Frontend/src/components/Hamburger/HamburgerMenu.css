@@ -1,8 +1,4 @@
 /* 2b. #header navbar */
-.hamburger-menu {
-	position: relative;
-}
-
 .hamburger-menu a {
 	color: var(--color-palette-200);
 	font-family: Asap;
@@ -42,7 +38,7 @@
 /* 2d. Dropdown Menu */
 .hamburger-menu__button {
 	--stripes-length: 36px;
-	height: var(--logo-size, 48px);
+	height: var(--logo-size, 100%);
 	width: var(--stripes-length);
 	display: flex;
 	flex-direction: column;

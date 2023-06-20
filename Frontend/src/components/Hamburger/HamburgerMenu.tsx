@@ -1,16 +1,22 @@
 import { Link } from 'react-router-dom';
 import './HamburgerMenu.css';
 
-export default function Hamburger() {
-	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+export default function HamburgerMenu() {
+	const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		const button = e.target as HTMLButtonElement;
 		button.classList.toggle('close');
+	};
+	const handleLinkClick = () => {
+		const hamburgerMenuButton: HTMLButtonElement = document.querySelector(
+			'.hamburger-menu__button'
+		)!;
+		hamburgerMenuButton.classList.remove('close');
 	};
 	return (
 		<nav className="hamburger-menu">
 			<button
 				className="hamburger-menu__button flex-center flex-column"
-				onClick={(e) => handleClick(e)}
+				onClick={(e) => handleButtonClick(e)}
 			>
 				<div className="hamburger-menu__stripes"></div>
 				<div className="hamburger-menu__stripes"></div>
@@ -18,10 +24,14 @@ export default function Hamburger() {
 			</button>
 			<ul className="hamburger-menu__list">
 				<li>
-					<Link to="/account/exercises">Exercises</Link>
+					<Link to="/account/exercises" onClick={handleLinkClick}>
+						Exercises
+					</Link>
 				</li>
 				<li>
-					<Link to="/account/workouts">Workouts</Link>
+					<Link to="/account/workouts" onClick={handleLinkClick}>
+						Workouts
+					</Link>
 				</li>
 			</ul>
 		</nav>
