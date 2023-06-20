@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap&family=Cinzel&family=Playfair+Display&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--color-palette-50: #f0f4f8;
+	--color-palette-100: #d9e2ec;
+	--color-palette-200: #bcccdc;
+	--color-palette-300: #9fb3c8;
+	--color-palette-400: #829ab1;
+	--color-palette-500: #627d98;
+	--color-palette-600: #486581;
+	--color-palette-700: #334e68;
+	--color-palette-800: #243b53;
+	--color-palette-900: #102a43;
+}
+
+body {
+	background-color: var(--color-palette-800);
+	color: var(--color-palette-200);
+	font-family: Asap;
+}
