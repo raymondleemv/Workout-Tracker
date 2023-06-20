@@ -6,10 +6,11 @@ import {
 import { TExercise } from '../../utils/database/exercise.database';
 import { Link, Route, Routes } from 'react-router-dom';
 import ExerciseAddEditForm from './ExerciseAddEditForm';
+import { Status } from '../../utils/helper';
 
 function Exercise() {
 	const [exercises, setExercises] = useState<TExercise[]>([]);
-	const [status, setStatus] = useState<string>('');
+	const [status, setStatus] = useState<Status>(new Status(''));
 
 	useEffect(() => {
 		const getExercises = async () => {
@@ -23,10 +24,10 @@ function Exercise() {
 	const handleDeleteExerciseClick = async (exercise: TExercise) => {
 		const response = await deleteExercise(exercise._id!);
 		if (response.status === 200) {
-			setStatus(`The ${exercise.name} exercise has been deleted`);
+			setStatus(new Status(`The ${exercise.name} exercise has been deleted`));
 		} else {
 			const responseText = await response.text();
-			setStatus(responseText);
+			setStatus(new Status(responseText));
 		}
 	};
 
@@ -61,7 +62,7 @@ function Exercise() {
 
 	const exerciseView = (
 		<>
-			<p>{status}</p>
+			<p>{status.message}</p>
 			<Link to="add">Add Exercise</Link>
 			{exerciseTable}
 		</>

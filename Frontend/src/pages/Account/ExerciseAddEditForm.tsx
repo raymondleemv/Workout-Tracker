@@ -6,16 +6,17 @@ import {
 	getExercisesByUserId,
 } from '../../utils/database/exercise.database';
 import { useState } from 'react';
+import { Status } from '../../utils/helper';
 
 interface IProps {
 	add: boolean;
-	setStatus: (status: string) => void;
+	setStatus: (status: Status) => void;
 }
 
 function ExerciseAddEditForm(props: IProps) {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const [status, setStatus] = useState<string>('');
+	const [status, setStatus] = useState<Status>(new Status(''));
 
 	const submitFormHandler = async (e: any) => {
 		e.preventDefault();
@@ -35,19 +36,21 @@ function ExerciseAddEditForm(props: IProps) {
 		}
 		if (response.status === 200) {
 			props.setStatus(
-				`The ${e.target.name.value} exercise has been ${
-					props.add ? 'added' : 'updated'
-				}`
+				new Status(
+					`The ${e.target.name.value} exercise has been ${
+						props.add ? 'added' : 'updated'
+					}`
+				)
 			);
 			navigate('/account/exercises');
 		} else {
 			const responseText = await response.text();
-			setStatus(responseText);
+			setStatus(new Status(responseText));
 		}
 	};
 	return (
 		<>
-			<p>{status}</p>
+			<p>{status.message}</p>
 			<Link to="/account/exercises">Back</Link>
 			<form onSubmit={(e) => submitFormHandler(e)}>
 				<label htmlFor="name">Name:</label>

@@ -3,6 +3,7 @@ import { isAuthenticated } from '../../utils/auth';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Exercise from './Exercise';
+import Workout from './Workout';
 
 function Account() {
 	const navigate = useNavigate();
@@ -20,6 +21,7 @@ function Account() {
 			<Header showHamburger={true} />
 			<Routes>
 				<Route path="exercises/*" element={<Exercise />}></Route>
+				<Route path="workouts/*" element={<Workout />}></Route>
 			</Routes>
 		</>
 	);
