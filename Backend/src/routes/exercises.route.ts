@@ -1,24 +1,32 @@
 import express from 'express';
 import * as database from '../database/exercise.database';
+import { Exercise } from '../models/Exercise.model';
 
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
+	const user: any = req.user;
+	const exercise = new Exercise({
+		name: req.body.name,
+		exercise_type: req.body.exercise_type,
+		user: user.id,
+	});
 	try {
-		await database.addExercise(req.body);
+		await database.addExercise(exercise);
 	} catch (e) {
 		res.status(400).send(e);
 	}
 	res.send('add exercise successful');
 });
 
-router.post('/get', async (req, res) => {
+router.get('/getExercisesByUserId', async (req, res) => {
+	const user: any = req.user;
 	try {
-		await database.getExercisesByUserId(req.body);
+		const exercises = await database.getExercisesByUserId(user.id);
+		res.send(exercises);
 	} catch (e) {
 		res.status(400).send(e);
 	}
-	res.send('get exercises successful');
 });
 
 router.post('/edit', async (req, res) => {
@@ -37,6 +45,29 @@ router.post('/delete', async (req, res) => {
 		res.status(400).send(e);
 	}
 	res.send('delete exercise successful');
+});
+
+router.get('/getExerciseTypes', async (req, res) => {
+	const user: any = req.user;
+	try {
+		const exerciseTypes = await database.getExerciseTypes(user.id);
+		res.send(exerciseTypes);
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
+
+router.post('/getExercisesByExerciseType', async (req, res) => {
+	const user: any = req.user;
+	try {
+		const exerciseTypes = await database.getExercisesByExerciseType(
+			user.id,
+			req.body.exercise_type
+		);
+		res.send(exerciseTypes);
+	} catch (e) {
+		res.status(400).send(e);
+	}
 });
 
 export default router;

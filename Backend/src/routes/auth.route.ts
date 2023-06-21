@@ -55,7 +55,7 @@ router.get('/login-failed', (req, res) => {
 	res.status(400).send('login failed');
 });
 
-router.post('/logout', function (req, res) {
+router.get('/logout', function (req, res) {
 	req.logout(function (err) {
 		if (err) {
 			return res.status(400).send(err);

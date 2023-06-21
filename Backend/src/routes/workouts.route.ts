@@ -1,24 +1,31 @@
 import express from 'express';
 import * as database from '../database/workout.database';
+import { Workout } from '../models/Workout.model';
 
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
+	const user: any = req.user;
+	const workout = new Workout({
+		date: req.body.date,
+		user: user.id,
+	});
 	try {
-		await database.addWorkout(req.body);
+		await database.addWorkout(workout);
 	} catch (e) {
 		res.status(400).send(e);
 	}
 	res.send('add workout successful');
 });
 
-router.post('/get', async (req, res) => {
+router.get('/getWorkoutsByUserId', async (req, res) => {
+	const user: any = req.user;
 	try {
-		await database.getWorkoutsByUserId(req.body);
+		const workouts = await database.getWorkoutsByUserId(user.id);
+		res.send(workouts);
 	} catch (e) {
 		res.status(400).send(e);
 	}
-	res.send('get workouts successful');
 });
 
 router.post('/edit', async (req, res) => {

@@ -24,7 +24,7 @@ const workoutItemSchema = new Schema<IWorkoutItem>(
 			ref: 'Exercise',
 		},
 	},
-	{ collection: 'Workouts' }
+	{ collection: 'WorkoutItems' }
 );
 
 const WorkoutItem = model('WorkoutItem', workoutItemSchema);

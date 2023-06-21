@@ -5,12 +5,14 @@ async function addWorkout(data: IWorkout): Promise<IWorkout> {
 	return await Workout.create(data);
 }
 
-async function getWorkoutsByUserId(workoutID: String) {
-	return await Workout.find({ workout: workoutID });
+async function getWorkoutsByUserId(userID: String) {
+	return await Workout.find({ user: userID });
 }
 
 async function editWorkout(workout: any) {
-	return await Workout.findOneAndUpdate({ _id: workout._id }, workout);
+	console.log(workout);
+	const doc = await Workout.findOneAndUpdate({ _id: workout._id }, workout);
+	console.log(doc);
 }
 
 async function deleteWorkout(workoutID: Types.ObjectId) {

@@ -17,4 +17,25 @@ async function deleteExercise(exerciseID: Types.ObjectId) {
 	return await Exercise.deleteOne({ _id: exerciseID });
 }
 
-export { addExercise, getExercisesByUserId, editExercise, deleteExercise };
+async function getExerciseTypes(userID: string) {
+	return await Exercise.find({ user: userID }).distinct('exercise_type');
+}
+
+async function getExercisesByExerciseType(
+	userID: string,
+	exercise_type: string
+) {
+	return await Exercise.find({
+		user: userID,
+		exercise_type: exercise_type,
+	});
+}
+
+export {
+	addExercise,
+	getExercisesByUserId,
+	editExercise,
+	deleteExercise,
+	getExerciseTypes,
+	getExercisesByExerciseType,
+};
