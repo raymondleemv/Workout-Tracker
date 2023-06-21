@@ -24,3 +24,67 @@ body {
 	color: var(--color-palette-200);
 	font-family: Asap;
 }
+
+button {
+	font-size: 1rem;
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
+	color: var(--color-palette-200);
+	transition: 0.3s;
+}
+
+button:hover {
+	color: white;
+}
+
+a {
+	display: inline-block;
+	cursor: pointer;
+	color: var(--color-palette-200);
+	transition: 0.3s;
+	text-decoration: none;
+	margin: 0.5rem 0;
+	margin-right: 0.5rem;
+}
+
+p {
+	margin: 0.5rem 0;
+}
+
+a:hover {
+	color: white;
+}
+
+main {
+	padding: 0.5rem;
+}
+
+table {
+	width: 100%;
+	margin: 0.5em 0;
+	border-collapse: collapse;
+}
+
+th {
+	text-align: start;
+}
+
+td,
+th {
+	padding: 8px;
+	vertical-align: middle;
+}
+
+thead tr {
+	background-color: var(--color-palette-300);
+	color: var(--color-palette-900);
+}
+
+tbody tr:nth-child(odd) {
+	background-color: var(--color-palette-900);
+}
+
+tbody tr:nth-child(even) {
+	background-color: var(--color-palette-700);
+}

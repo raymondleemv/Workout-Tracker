@@ -42,6 +42,8 @@ function WorkoutItem() {
 					<th>Exercise</th>
 					<th>Weight</th>
 					<th>Reps</th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
