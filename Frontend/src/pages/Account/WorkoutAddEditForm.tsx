@@ -45,13 +45,15 @@ function WorkoutAddEditForm(props: IProps) {
 			<p>{status.message}</p>
 			<Link to="/account/workouts">Back</Link>
 			<form onSubmit={(e) => submitFormHandler(e)}>
-				<label htmlFor="date">Name:</label>
-				<input
-					name="date"
-					type="date"
-					defaultValue={location.state?.workout.date}
-					required
-				/>
+				<div className="form__field">
+					<label htmlFor="date">Name:</label>
+					<input
+						name="date"
+						type="date"
+						defaultValue={location.state?.workout.date}
+						required
+					/>
+				</div>
 				<button type="submit">{props.add ? 'Add' : 'Edit'} Workout</button>
 			</form>
 		</>
