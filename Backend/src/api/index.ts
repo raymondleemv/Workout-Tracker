@@ -40,6 +40,9 @@ app.use(
 );
 app.use(passport.authenticate('session'));
 app.use('/api/auth', authRoutes);
+app.get('/api/testing', (req, res) => {
+	res.send('hello world');
+});
 
 app.use(ensureLoggedIn);
 app.use('/api/exercises', exerciseRoutes);
