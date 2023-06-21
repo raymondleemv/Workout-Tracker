@@ -10,15 +10,20 @@ export default function HamburgerMenu() {
 		button.classList.toggle('close');
 	};
 
-	const handleLinkClick = () => {
+	const closeMenu = () => {
 		const hamburgerMenuButton: HTMLButtonElement = document.querySelector(
 			'.hamburger-menu__button'
 		)!;
 		hamburgerMenuButton.classList.remove('close');
 	};
 
+	const handleLinkClick = () => {
+		closeMenu();
+	};
+
 	const handleLogoutClicked = async () => {
 		await logout();
+		closeMenu();
 		navigate('/');
 	};
 
