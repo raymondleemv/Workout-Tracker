@@ -9,12 +9,12 @@ function App() {
 	return (
 		<div className="App">
 			<Routes>
-				<Route path="/" element={<Home />}></Route>
+				<Route path="/*" element={<Home />}></Route>
 				<Route path="/account/*" element={<Account />}>
 					<Route path="*" element={<Account />} />
 				</Route>
-				<Route path="/login" element={<Login />}></Route>
-				<Route path="/signup" element={<Signup />}></Route>
+				{/* <Route path="/login" element={<Login />}></Route>
+				<Route path="/signup" element={<Signup />}></Route> */}
 			</Routes>
 		</div>
 	);

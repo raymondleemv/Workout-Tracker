@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { isAuthenticated, login } from '../utils/auth';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
 	const navigate = useNavigate();
@@ -25,13 +26,22 @@ function Login() {
 	};
 
 	return (
-		<form onSubmit={(e) => submitFormHandler(e)}>
-			<label htmlFor="email">Email:</label>
-			<input name="email" type="email" required />
-			<label htmlFor="password">Password:</label>
-			<input name="password" type="password" required />
-			<button type="submit">Login</button>
-		</form>
+		<>
+			<form onSubmit={(e) => submitFormHandler(e)}>
+				<div className="form__field">
+					<label htmlFor="email">Email:</label>
+					<input name="email" type="email" required />
+				</div>
+				<div className="form__field">
+					<label htmlFor="password">Password:</label>
+					<input name="password" type="password" required />
+				</div>
+				<button type="submit">Login</button>
+			</form>
+			<p>
+				Dont have an account yet? <Link to="/signup">Sign up</Link>
+			</p>
+		</>
 	);
 }
 

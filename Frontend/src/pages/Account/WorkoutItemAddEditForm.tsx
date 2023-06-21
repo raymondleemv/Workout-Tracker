@@ -97,37 +97,45 @@ function WorkoutAddEditForm(props: IProps) {
 				Back
 			</Link>
 			<form onSubmit={(e) => submitFormHandler(e)}>
-				<label htmlFor="exercise_type">Exercise Type:</label>
-				<select
-					name="exercise_type"
-					onChange={(e) => {
-						setSelectedExerciseType(e.target.value);
-					}}
-				>
-					{exerciseTypes.map((exerciseType) => (
-						<option value={exerciseType}>{exerciseType}</option>
-					))}
-				</select>
-				<label htmlFor="exercise">Exercise:</label>
-				<select name="exercise">
-					{exercises.map((exercise) => (
-						<option value={exercise._id}>{exercise.name}</option>
-					))}
-				</select>
-				<label htmlFor="weight">Weight:</label>
-				<input
-					name="weight"
-					type="number"
-					defaultValue={location.state?.workoutItem?.weight}
-					required
-				/>
-				<label htmlFor="reps">Reps:</label>
-				<input
-					name="reps"
-					type="number"
-					defaultValue={location.state?.workoutItem?.reps}
-					required
-				/>
+				<div className="form__field">
+					<label htmlFor="exercise_type">Exercise Type:</label>
+					<select
+						name="exercise_type"
+						onChange={(e) => {
+							setSelectedExerciseType(e.target.value);
+						}}
+					>
+						{exerciseTypes.map((exerciseType) => (
+							<option value={exerciseType}>{exerciseType}</option>
+						))}
+					</select>
+				</div>
+				<div className="form__field">
+					<label htmlFor="exercise">Exercise:</label>
+					<select name="exercise">
+						{exercises.map((exercise) => (
+							<option value={exercise._id}>{exercise.name}</option>
+						))}
+					</select>
+				</div>
+				<div className="form__field">
+					<label htmlFor="weight">Weight:</label>
+					<input
+						name="weight"
+						type="number"
+						defaultValue={location.state?.workoutItem?.weight}
+						required
+					/>
+				</div>
+				<div className="form__field">
+					<label htmlFor="reps">Reps:</label>
+					<input
+						name="reps"
+						type="number"
+						defaultValue={location.state?.workoutItem?.reps}
+						required
+					/>
+				</div>
 				<button type="submit">{props.add ? 'Add' : 'Edit'} Workout Item</button>
 			</form>
 		</>

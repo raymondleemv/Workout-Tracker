@@ -53,18 +53,22 @@ function ExerciseAddEditForm(props: IProps) {
 			<p>{status.message}</p>
 			<Link to="/account/exercises">Back</Link>
 			<form onSubmit={(e) => submitFormHandler(e)}>
-				<label htmlFor="name">Name:</label>
-				<input
-					name="name"
-					defaultValue={location.state?.exercise.name}
-					required
-				/>
-				<label htmlFor="exercise_type">Exercise Type:</label>
-				<input
-					name="exercise_type"
-					defaultValue={location.state?.exercise.exercise_type}
-					required
-				/>
+				<div className="form__field">
+					<label htmlFor="name">Name:</label>
+					<input
+						name="name"
+						defaultValue={location.state?.exercise.name}
+						required
+					/>
+				</div>
+				<div className="form__field">
+					<label htmlFor="exercise_type">Exercise Type:</label>
+					<input
+						name="exercise_type"
+						defaultValue={location.state?.exercise.exercise_type}
+						required
+					/>
+				</div>
 				<button type="submit">{props.add ? 'Add' : 'Edit'} Exercise</button>
 			</form>
 		</>
