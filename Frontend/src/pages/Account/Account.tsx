@@ -19,10 +19,12 @@ function Account() {
 	return (
 		<>
 			<Header showHamburger={true} />
-			<Routes>
-				<Route path="exercises/*" element={<Exercise />}></Route>
-				<Route path="workouts/*" element={<Workout />}></Route>
-			</Routes>
+			<main>
+				<Routes>
+					<Route path="exercises/*" element={<Exercise />}></Route>
+					<Route path="workouts/*" element={<Workout />}></Route>
+				</Routes>
+			</main>
 		</>
 	);
 }

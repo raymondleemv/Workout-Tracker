@@ -37,6 +37,8 @@ function Exercise() {
 				<tr>
 					<th>Exercise</th>
 					<th>Exercise Type</th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>

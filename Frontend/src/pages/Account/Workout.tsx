@@ -37,6 +37,8 @@ function Workout() {
 			<thead>
 				<tr>
 					<th>Workout Date</th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -66,7 +68,7 @@ function Workout() {
 	const workoutView = (
 		<>
 			<h1>Workouts</h1>
-			<p>{status.message}</p>
+			{status.message && <p>{status.message}</p>}
 			<Link to="add">Add Workout</Link>
 			{workoutTable}
 		</>
