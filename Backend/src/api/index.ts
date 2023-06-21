@@ -15,7 +15,13 @@ const app = express();
 app.use(express.json());
 app.use(
 	cors({
-		origin: 'http://localhost:5173',
+		origin:
+			process.env.PRODUCTION === 'true'
+				? [
+						'https://workout-tracker.raymondleemv.com',
+						'https://workout-tracker-git-development-raymondleemv.vercel.app',
+				  ]
+				: 'http://localhost:5173',
 		credentials: true,
 	})
 );
