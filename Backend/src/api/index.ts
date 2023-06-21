@@ -39,6 +39,9 @@ app.use(
 	})
 );
 app.use(passport.authenticate('session'));
+app.get('/api', (req, res) => {
+	res.send('hello world');
+});
 app.use('/api/auth', authRoutes);
 app.get('/api/testing', (req, res) => {
 	res.send('hello world');
