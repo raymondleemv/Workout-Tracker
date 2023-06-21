@@ -45,9 +45,14 @@ async function login(email: string, password: string) {
 	return response;
 }
 
+async function logout() {
+	const response = await fetchBackendAuthRoutes('GET', '/logout');
+	return response;
+}
+
 async function isAuthenticated() {
 	const response = await fetchBackendAuthRoutes('GET', '/status');
 	return response.status === 200 ? true : false;
 }
 
-export { signup, login, isAuthenticated };
+export { signup, login, logout, isAuthenticated };

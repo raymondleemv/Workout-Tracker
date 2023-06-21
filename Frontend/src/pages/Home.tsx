@@ -1,18 +1,11 @@
-import Hamburger from '../components/Hamburger/HamburgerMenu';
-import ExerciseAddEditForm from './Account/ExerciseAddEditForm';
-import Login from './Login';
-import Signup from './Signup';
+import { Link } from 'react-router-dom';
+
 function Home() {
 	return (
 		<>
 			<h1>Workout Tracker</h1>
-			<h2>Signup</h2>
-			<Signup />
-			<h2>Login</h2>
-			<Login />
-			<h2>Add Exercise</h2>
-			<ExerciseAddEditForm />
-			<Hamburger />
+			<p>Start tracking your workout progress today</p>
+			<Link to="login">Login</Link>
 		</>
 	);
 }

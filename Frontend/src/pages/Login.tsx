@@ -9,7 +9,7 @@ function Login() {
 		const redirectIfNotLoggedIn = async () => {
 			const authStatus = await isAuthenticated();
 			if (authStatus) {
-				navigate('/account');
+				navigate('/account/workouts');
 			}
 		};
 		redirectIfNotLoggedIn();
@@ -19,7 +19,6 @@ function Login() {
 		e.preventDefault();
 		const response = await login(e.target.email.value, e.target.password.value);
 		const responseText = await response.text();
-		console.log(responseText);
 	};
 
 	return (

@@ -7,6 +7,7 @@ import {
 } from '../../utils/database/workout.database';
 import WorkoutAddEditForm from './WorkoutAddEditForm';
 import { Status } from '../../utils/helper';
+import WorkoutItem from './WorkoutItem';
 
 function Workout() {
 	const [workouts, setWorkouts] = useState<TWorkout[]>([]);
@@ -41,7 +42,11 @@ function Workout() {
 			<tbody>
 				{workouts.map((workout) => (
 					<tr>
-						<td>{workout.date}</td>
+						<td>
+							<Link to={`${workout.date}`} state={{ workout: workout }}>
+								{workout.date}
+							</Link>
+						</td>
 						<td>
 							<Link to="edit" state={{ workout: workout }}>
 								Edit
@@ -60,6 +65,7 @@ function Workout() {
 
 	const workoutView = (
 		<>
+			<h1>Workouts</h1>
 			<p>{status.message}</p>
 			<Link to="add">Add Workout</Link>
 			{workoutTable}
@@ -68,7 +74,6 @@ function Workout() {
 
 	return (
 		<>
-			<h1>Workouts</h1>
 			<Routes>
 				<Route
 					path="add"
@@ -78,7 +83,8 @@ function Workout() {
 					path="edit"
 					element={<WorkoutAddEditForm add={false} setStatus={setStatus} />}
 				></Route>
-				<Route path="*" element={workoutView} />
+				<Route path=":workoutDate/*" element={<WorkoutItem />}></Route>
+				<Route index element={workoutView} />
 			</Routes>
 		</>
 	);

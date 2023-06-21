@@ -10,7 +10,7 @@ const backendAuthRoutesUrl = backendServerUrl + '/api/exercises';
 async function fetchBackendExerciseRoutes(
 	endpoint: string,
 	method: 'GET' | 'POST',
-	data?: TExercise | { _id: string }
+	data?: TExercise | { _id: string } | { exercise_type: string }
 ) {
 	const response = await fetch(backendAuthRoutesUrl + endpoint, {
 		method: method,
@@ -53,4 +53,28 @@ async function deleteExercise(id: string) {
 	return response;
 }
 
-export { addExercise, getExercisesByUserId, editExercise, deleteExercise };
+async function getExerciseTypes() {
+	const response = await fetchBackendExerciseRoutes('/getExerciseTypes', 'GET');
+	return response;
+}
+
+async function getExercisesByExerciseType(exercise_type: string) {
+	const data = {
+		exercise_type: exercise_type,
+	};
+	const response = await fetchBackendExerciseRoutes(
+		'/getExercisesByExerciseType',
+		'POST',
+		data
+	);
+	return response;
+}
+
+export {
+	addExercise,
+	getExercisesByUserId,
+	editExercise,
+	deleteExercise,
+	getExerciseTypes,
+	getExercisesByExerciseType,
+};
