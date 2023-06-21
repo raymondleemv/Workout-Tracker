@@ -53,3 +53,5 @@ app.use('/api/workout-items', workoutItemRoutes);
 app.listen(3002, () => {
 	console.log('app listenting on port 3002.');
 });
+
+export default app;
