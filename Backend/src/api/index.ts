@@ -19,7 +19,7 @@ app.use(
 			process.env.PRODUCTION === 'true'
 				? [
 						'https://workout-tracker.raymondleemv.com',
-						'https://workout-tracker-git-development-raymondleemv.vercel.app',
+						'https://workout-tracker-frontend-git-development-raymondleemv.vercel.app',
 				  ]
 				: 'http://localhost:5173',
 		credentials: true,
@@ -28,6 +28,7 @@ app.use(
 
 databaseConfig();
 
+app.set('trust proxy', 1);
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET!,

@@ -18,6 +18,9 @@ function Login() {
 	let submitFormHandler = async (e: any) => {
 		e.preventDefault();
 		const response = await login(e.target.email.value, e.target.password.value);
+		if (response.status === 200) {
+			navigate('/account/workouts');
+		}
 		const responseText = await response.text();
 	};
 
