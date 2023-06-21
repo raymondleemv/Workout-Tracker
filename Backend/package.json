@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "tsc && node dist/api/index.js",
 	"scripts": {
+		"build": "tsc",
 		"test": "tsc && npx jasmine dist/spec/**/*.[sS]pec.js",
 		"dev": "tsc && nodemon dist/api/index.js"
 	},
