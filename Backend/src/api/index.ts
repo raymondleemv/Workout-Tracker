@@ -19,7 +19,7 @@ app.use(
 			process.env.PRODUCTION === 'true'
 				? [
 						'https://workout-tracker.raymondleemv.com',
-						'https://workout-tracker-git-development-raymondleemv.vercel.app',
+						'https://workout-tracker-frontend-git-development-raymondleemv.vercel.app',
 				  ]
 				: 'http://localhost:5173',
 		credentials: true,
@@ -28,6 +28,7 @@ app.use(
 
 databaseConfig();
 
+app.set('trust proxy', 1);
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET!,
@@ -39,6 +40,9 @@ app.use(
 	})
 );
 app.use(passport.authenticate('session'));
+app.get('/api', (req, res) => {
+	res.send('hello world');
+});
 app.use('/api/auth', authRoutes);
 app.get('/api/testing', (req, res) => {
 	res.send('hello world');
@@ -53,3 +57,5 @@ app.use('/api/workout-items', workoutItemRoutes);
 app.listen(3002, () => {
 	console.log('app listenting on port 3002.');
 });
+
+export default app;

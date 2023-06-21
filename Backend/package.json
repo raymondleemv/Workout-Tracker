@@ -2,8 +2,9 @@
 	"name": "workout-tracker",
 	"version": "1.0.0",
 	"description": "",
-	"main": "tsc && node dist/api/index.js",
+	"main": "api/index.js",
 	"scripts": {
+		"start": "nodemon src/api/index.ts",
 		"build": "tsc",
 		"test": "tsc && npx jasmine dist/spec/**/*.[sS]pec.js",
 		"dev": "tsc && nodemon dist/api/index.js"
